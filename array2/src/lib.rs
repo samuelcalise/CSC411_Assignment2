@@ -17,7 +17,10 @@ mod tests {
 #[derive(Debug, Clone, Eq, PartialEq)]
 
 
-
+pub struct Array2<T: Clone> {
+    width: usize,
+    height: usize,
+}
 
 
 impl<T: Clone> Array2<T> {
