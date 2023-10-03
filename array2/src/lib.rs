@@ -30,6 +30,8 @@ impl<T: Clone> Array2<T> {
     ///
     /// * `width`: the width of the `Array2`.
     /// * `height`: the height of the `Array2`.
+    width:  usize;
+    length: usize;
 
     /*------------------------\
     |    Public Functions     |
