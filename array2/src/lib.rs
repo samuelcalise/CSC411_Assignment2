@@ -1,27 +1,8 @@
-/*
-pub fn add(left: usize, right: usize) -> usize {
-    left + right
-}
-
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    #[test]
-    fn it_works() {
-        let result = add(2, 2);
-        assert_eq!(result, 4);
-    }
-}*/
-
-#[derive(Debug, Clone, Eq, PartialEq)]
-
-
 pub struct Array2<T: Clone> {
     width: usize,
     height: usize,
+    data: Vec<T>,
 }
-
 
 impl<T: Clone> Array2<T> {
     /// Creates a new `Array2`.
@@ -30,75 +11,35 @@ impl<T: Clone> Array2<T> {
     ///
     /// * `width`: the width of the `Array2`.
     /// * `height`: the height of the `Array2`.
-    width:  usize;
-    length: usize;
+    pub fn new(row: usize, column: usize, value: T) -> Self {
+        Array2 {
+            width: column,
+            height: row,
+            data: vec![value; row * column]
+        }
+    }
 
     /*------------------------\
-    |    Public Functions     |
+    |    Private Functions    |
     \------------------------*/
 
-    pub mod library_PublicFunctions{
-        pub fn f_constructor_BlankSlate()
-        {
-            println!("In blank slate constructor");
-        }
-                                //int p_element: usize
-        pub fn f_add_ArrayElement()
-        {
-            println!("In the added element function");
-        }
-                                //int p_row: usize, int p_column: usize
-        pub fn f_find_ValueAtCoord()
-        {
-            println!("In the find value at coordinate function");
-        }
+    fn f_bool_ValidElement() {
+        println!("In private function valid element");
+    }
 
-        pub fn f_traverse_IterRowMajor()
-        {
-            println!("In from row major");
-        }
+    fn f_bool_ValidRow() {
+        println!("In private function valid row");
+    }
 
-        pub fn f_traverse_IterColMajor()
-        {
-            println!("In iter col major");
-        }
+    fn f_bool_ValidCol() {
+        println!("In private function valid col");
+    }
+
+    fn f_bool_EmptyImage() {
+        println!("In private function empty img");
+    }
+
+    fn f_bool_ValidSquare() {
+        println!("In private function empty img");
     }
 }
-
-
-
-
-/*
-    /*------------------------*/
-    |    Private Functions     |
-    /*------------------------*/
-
-    mod library_PrivateFunctions{
-
-        pub fn f_bool_ValidElement()
-        {
-            println!("In private function valid element");
-        }
-
-        pub fn f_bool_ValidRow()
-        {
-            println!("In private function valid row");
-        }
-
-        pub fn f_bool_ValidCol()
-        {
-            println!("In private function valid col");
-        }
-
-        pub fn f_bool_EmptyImage()
-        {
-            println!("In private function empty img");
-        }
-
-        pub fn f_bool_ValidSquare()
-        {
-            println!("In private function empty img");
-        }
-
-    }
-*/
