@@ -19,27 +19,27 @@ impl<T: Clone> Array2<T> {
         }
     }
 
-    /*------------------------\
-    |    Private Functions    |
+   /*------------------------\
+    |    Public Functions    |
     \------------------------*/
 
-    fn f_bool_ValidElement() {
-        println!("In private function valid element");
+    pub fn f_bool_ValidElement() {
+        println!("In public function valid element");
     }
 
-    fn f_bool_ValidRow() {
-        println!("In private function valid row");
+    pub fn f_bool_ValidRow() {
+        println!("In public function valid row");
     }
 
-    fn f_bool_ValidCol() {
-        println!("In private function valid col");
+    pub fn f_bool_ValidCol() {
+        println!("In public function valid col");
     }
 
-    fn f_bool_EmptyImage() {
-        println!("In private function empty img");
+    pub fn f_bool_EmptyImage() {
+        println!("In public function empty img");
     }
 
-    fn f_bool_ValidSquare() {
-        println!("In private function empty img");
+    pub fn f_bool_ValidSquare() {
+        println!("In public function empty img");
     }
 }
