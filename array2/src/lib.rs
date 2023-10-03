@@ -31,9 +31,9 @@ impl<T: Clone> Array2<T> {
     /// * `width`: the width of the `Array2`.
     /// * `height`: the height of the `Array2`.
 
-    /*------------------------*/
-    |    Public Functions      |
-    /*------------------------*/
+    /*------------------------\
+    |    Public Functions     |
+    \------------------------*/
 
     pub mod library_PublicFunctions{
         pub fn f_constructor_BlankSlate()
