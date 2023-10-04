@@ -1,5 +1,5 @@
-
-
+use csc411_image::{Read, GrayImage};
+use std::env;
 
 pub use array2::Array2;
 

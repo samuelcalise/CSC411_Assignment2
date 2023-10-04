@@ -1,3 +1,6 @@
+use csc411_image::{Read, GrayImage};
+
+
 pub struct Array2<T: Clone> {
     width: usize,
     height: usize,
