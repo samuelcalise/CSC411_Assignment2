@@ -19,11 +19,11 @@ impl<T: Clone> Array2<T> {
         }
     }
 
-   /*------------------------\
+    /*------------------------\
     |    Public Functions    |
     \------------------------*/
 
-    pub fn f_bool_ValidElement() {
+    pub fn f_bool_ValidElement(& mut self) {
         println!("In public function valid element");
     }
 
