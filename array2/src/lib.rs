@@ -14,11 +14,11 @@ impl<T: Clone> Array2<T> {
     ///
     /// * `width`: the width of the `Array2`.
     /// * `height`: the height of the `Array2`.
-    pub fn new(row: usize, column: usize, value: T) -> Self {
+    pub fn new(row: usize, column: usize, data: Vec<T>) -> Self {
         Array2 {
             width: column,
             height: row,
-            data: vec![value; row * column]
+            data,
         }
     }
 
@@ -36,6 +36,10 @@ impl<T: Clone> Array2<T> {
 
     pub fn f_bool_ValidCol() {
         println!("In public function valid col");
+    }
+
+    pub fn get_data(&self) -> &Vec<T> {
+        &self.data
     }
 
     pub fn f_bool_EmptyImage() {
