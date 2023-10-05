@@ -1,8 +1,8 @@
 use std::collections::HashSet;
 
 pub struct Array2<T: Clone> {
-    width: usize,
-    height: usize,
+    width: u32,
+    height: u32,
     data: Vec<T>,
 }
 
@@ -13,7 +13,7 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
     ///
     /// * `width`: the width of the `Array2`.
     /// * `height`: the height of the `Array2`.
-    pub fn new(row: usize, column: usize, data: Vec<T>) -> Self {
+    pub fn new(row: u32, column: u32, data: Vec<T>) -> Self {
         Array2 {
             width: column,
             height: row,
