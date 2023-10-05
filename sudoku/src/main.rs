@@ -5,6 +5,7 @@ use std::vec::Vec;
 use array2::Array2;
 
 fn main() {
+
     let input = env::args().nth(1);
     let img = GrayImage::read(input.as_deref()).unwrap();
 
@@ -38,6 +39,6 @@ fn main() {
 
     for row in &sudoku_table {
         let array = Array2::new(img.width, img.height, row.to_vec());
-        println!("{}",array.f_bool_valid_element());
+        println!("{}",array.f_bool_valid_row());
     }
 }

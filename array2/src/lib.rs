@@ -25,7 +25,7 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
     |    Public Functions     |
     \------------------------*/
 
-    pub fn f_bool_valid_element(&self) -> bool {
+    pub fn f_bool_valid_row(&self) -> bool {
         let mut unique_set = HashSet::new(); // HashSet to track unique elements
 
         for element in &self.data {
