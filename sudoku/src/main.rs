@@ -32,6 +32,14 @@ fn main() {
         }
         println!();
     }
+
+    println!();
+    println!("---------------------");
+
+    for row in &sudoku_table {
+        let array = Array2::new(img.width, img.height, row.to_vec());
+        println!("{}",array.f_bool_valid_element());
+    }
 }
     // let array = Array2::new(3, 3, my_vector);
     
