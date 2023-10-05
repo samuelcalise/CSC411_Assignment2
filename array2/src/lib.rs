@@ -1,5 +1,4 @@
-use csc411_image::{Read, GrayImage};
-use core::ops::RangeBounds;
+use std::collections::HashSet;
 
 pub struct Array2<T: Clone> {
     width: usize,
@@ -7,7 +6,7 @@ pub struct Array2<T: Clone> {
     data: Vec<T>,
 }
 
-impl<T: Clone + RangeBounds<T>> Array2<T> {
+impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
     /// Creates a new `Array2`.
     ///
     /// # Arguments
@@ -26,36 +25,42 @@ impl<T: Clone + RangeBounds<T>> Array2<T> {
     |    Public Functions     |
     \------------------------*/
 
-    pub fn f_bool_ValidElement(&self) {
-        let mut unique_vector::<T> = vec![];
-        for element in self.get_data(){
-                if element.contains(unique_vector){
-                    unique_vector.push(element)
-                }
-                else{
-                    continue;
-                }
+    pub fn f_bool_valid_element(&self) -> bool {
+        let mut unique_set = HashSet::new(); // HashSet to track unique elements
+
+        for element in &self.data {
+            if unique_set.contains(element) {
+                // If the element is already in the set, it's not unique
+                return false;
+            } else {
+                unique_set.insert(element.clone()); // Insert the element into the set
             }
-        
+        }
+
+        true // All elements are unique
     }
 
-    pub fn f_bool_ValidRow() {
-        println!("In public function valid row");
+    pub fn f_bool_valid_row(&self) -> bool {
+        // Implement the logic for validating a row here
+        true // Placeholder logic
     }
 
-    pub fn f_bool_ValidCol() {
-        println!("In public function valid col");
+    pub fn f_bool_valid_col(&self) -> bool {
+        // Implement the logic for validating a column here
+        true // Placeholder logic
     }
 
     pub fn get_data(&self) -> &Vec<T> {
         &self.data
     }
 
-    pub fn f_bool_EmptyImage() {
-        println!("In public function empty img");
+    pub fn f_bool_empty_image(&self) -> bool {
+        // Implement the logic for checking if the image is empty here
+        true // Placeholder logic
     }
 
-    pub fn f_bool_ValidSquare() {
-        println!("In public function empty img");
+    pub fn f_bool_valid_square(&self) -> bool {
+        // Implement the logic for checking if it's a valid square here
+        true // Placeholder logic
     }
 }
