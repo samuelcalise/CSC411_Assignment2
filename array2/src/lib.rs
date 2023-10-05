@@ -23,7 +23,7 @@ impl<T: Clone> Array2<T> {
     }
 
     /*------------------------\
-    |    Public Functions    |
+    |    Public Functions     |
     \------------------------*/
 
     pub fn f_bool_ValidElement(& mut self) {
