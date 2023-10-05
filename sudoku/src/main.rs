@@ -12,15 +12,23 @@ fn main() {
 
     let mut my_vector: Vec<i32> = Vec::new();
 
+    println!("This img height: {}", img.height);
+    println!("This img width: {}", img.width);
+
     for pixel in img.pixels.iter().take(9) {
         my_vector.push((pixel.value as u32).try_into().unwrap());
     }
 
     let array = Array2::new(3, 3, my_vector);
+    
+    array.f_bool_ValidElement(my_vector);
 
-    for element in array.get_data() {
-        println!("{}", element);
-    }
+    // for (i, element) in array.get_data().iter().enumerate() {
+    //     print!("{}, ", element);
+    //     if (i + 1) % 9 == 0{
+    //         println!();
+    //     }
+    // }
 
     //println!("--- END OF PROGRAM ---");
 }

@@ -1,5 +1,5 @@
 use csc411_image::{Read, GrayImage};
-
+use core::ops::RangeBounds;
 
 pub struct Array2<T: Clone> {
     width: usize,
@@ -7,7 +7,7 @@ pub struct Array2<T: Clone> {
     data: Vec<T>,
 }
 
-impl<T: Clone> Array2<T> {
+impl<T: Clone + RangeBounds<T>> Array2<T> {
     /// Creates a new `Array2`.
     ///
     /// # Arguments
@@ -26,8 +26,17 @@ impl<T: Clone> Array2<T> {
     |    Public Functions     |
     \------------------------*/
 
-    pub fn f_bool_ValidElement(& mut self) {
-        println!("In public function valid element");
+    pub fn f_bool_ValidElement(&self) {
+        let mut unique_vector::<T> = vec![];
+        for element in self.get_data(){
+                if element.contains(unique_vector){
+                    unique_vector.push(element)
+                }
+                else{
+                    continue;
+                }
+            }
+        
     }
 
     pub fn f_bool_ValidRow() {
