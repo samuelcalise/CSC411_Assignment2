@@ -41,16 +41,3 @@ fn main() {
         println!("{}",array.f_bool_valid_element());
     }
 }
-    // let array = Array2::new(3, 3, my_vector);
-    
-    // println!("{}",array.f_bool_valid_element());
-
-    // for (i, element) in array.get_data().iter().enumerate() {
-    //     print!("{}, ", element);
-    //     if (i + 1) % 9 == 0{
-    //         println!();
-    //     }
-    // }
-    //      --- TO HERE ---^^^
-
-    //println!("--- END OF PROGRAM ---");
