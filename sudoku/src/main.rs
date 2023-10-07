@@ -9,7 +9,23 @@ fn main() {
 
     let input = env::args().nth(1);
 
-    let img = GrayImage::read(input.as_deref()).unwrap();
+    //let img = GrayImage::read(input.as_deref()).unwrap();
+
+    let img = match input {
+        Some(filename) => {
+            match GrayImage::read(Some(filename.as_str())) {
+                Ok(img) => img,
+                Err(_err) => {
+                    eprintln!("No File Found In Directory");
+                    process::exit(1);
+                }
+            }
+        }
+        None => {
+            eprintln!("No input filename provided.");
+            process::exit(1);
+        }
+    };
 
     if img.height != 9 && img.width != 9{
         //println!("Bad Board");
