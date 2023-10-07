@@ -16,17 +16,19 @@ fn main() {
             match GrayImage::read(Some(filename.as_str())) {
                 Ok(img) => img,
                 Err(_err) => {
-                    eprintln!("No File Found In Directory");
+                    eprintln!("No File Found In Directory"); //Works
                     process::exit(1);
                 }
             }
         }
+        //Works
         None => {
             eprintln!("No input filename provided.");
             process::exit(1);
         }
     };
 
+    //Works
     if img.height != 9 && img.width != 9{
         //println!("Bad Board");
         process::exit(1);
