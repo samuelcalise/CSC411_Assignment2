@@ -1,7 +1,9 @@
 use std::collections::HashSet;
 
 pub struct Array2<T: Clone> {
+    #[allow(dead_code)]
     width: u32,
+    #[allow(dead_code)]
     height: u32,
     data: Vec<T>,
 }
