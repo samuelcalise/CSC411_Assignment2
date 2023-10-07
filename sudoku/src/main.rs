@@ -1,13 +1,20 @@
 use csc411_image::{Read, GrayImage};
 use std::env;
 use std::vec::Vec;
-
 use array2::Array2;
+use std::process;
+
 
 fn main() {
 
     let input = env::args().nth(1);
+
     let img = GrayImage::read(input.as_deref()).unwrap();
+
+    if img.height != 9 && img.width != 9{
+        //println!("Bad Board");
+        process::exit(1);
+    }
 
     let mut my_vector: Vec<i32> = Vec::new();
 

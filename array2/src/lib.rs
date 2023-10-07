@@ -40,11 +40,6 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
         true // All elements are unique
     }
 
-    pub fn f_bool_valid_row(&self) -> bool {
-        // Implement the logic for validating a row here
-        true // Placeholder logic
-    }
-
     pub fn f_bool_valid_col(&self) -> bool {
         // Implement the logic for validating a column here
         true // Placeholder logic
