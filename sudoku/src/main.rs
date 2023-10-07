@@ -46,6 +46,6 @@ fn main() {
 
     for row in &sudoku_table {
         let array = Array2::new(img.width, img.height, row.to_vec());
-        println!("{}",array.f_bool_valid_row());
+        println!("{}",array.iter_row_major());
     }
 }
