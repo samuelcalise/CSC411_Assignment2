@@ -42,13 +42,38 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
         true // All elements are unique
     }
 
-    pub fn f_bool_valid_col(&self) -> bool {
-        // Implement the logic for validating a column here
-        true // Placeholder logic
+    pub fn iter_col_major(&self) -> bool {
+        let mut unique_set = HashSet::new(); // HashSet to track unique elements
+
+        for element in &self.data {
+            if unique_set.contains(element) {
+                // If the element is already in the set, it's not unique
+                return false;
+            } else {
+                unique_set.insert(element.clone()); // Insert the element into the set
+            }
+        }
+
+        true // All elements are unique
     }
 
     pub fn get_data(&self) -> &Vec<T> {
         &self.data
+    }
+
+    pub fn iter_subsquare_major(&self) -> bool {
+        let mut unique_set = HashSet::new(); // HashSet to track unique elements
+
+        for element in &self.data {
+            if unique_set.contains(element) {
+                // If the element is already in the set, it's not unique
+                return false;
+            } else {
+                unique_set.insert(element.clone()); // Insert the element into the set
+            }
+        }
+
+        true // All elements are unique
     }
 
     pub fn f_bool_empty_image(&self) -> bool {

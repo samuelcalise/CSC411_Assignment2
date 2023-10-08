@@ -7,7 +7,9 @@ use std::process;
 
 fn main() {
 
+    //Getting The File Name
     let input = env::args().nth(1);
+    //println!("{:?}", input); Value is "None" if there is nothing within terminal run command
 
     //let img = GrayImage::read(input.as_deref()).unwrap();
 
@@ -54,16 +56,62 @@ fn main() {
 
     for row in &sudoku_table {
         for &element in row {
-            print!("{:3} ", element);
+            print!("{:?} ", element);
         }
         println!();
     }
 
     println!();
-    println!("---------------------");
+    println!("------Below: Verifying Valid Rows----------");
 
     for row in &sudoku_table {
         let array = Array2::new(img.width, img.height, row.to_vec());
-        println!("{}",array.iter_row_major());
+        println!("{:?}",array.iter_row_major());
+    }
+
+    println!();
+    println!("-----Below: Verifying Valid Rows------");
+
+    let mut sudoku_table_of_columns: Vec<Vec<i32>> = vec![vec![0; img.width as usize]; img.height as usize];
+
+    for row in 0..9{
+        for column in 0..9{
+            sudoku_table_of_columns[column][row] = my_vector[row * 9 + column];
+        }
+    }
+
+    for column in &sudoku_table_of_columns {
+        println!("{:?}", column);
+    }
+
+    for every_column in &sudoku_table {
+        let array = Array2::new(img.width, img.height, every_column.to_vec());
+        println!("{:?}",array.iter_col_major());
+    }
+
+    println!();
+    println!("-----Below: Verifying SubSquares------");
+
+    let mut sudoku_table_of_subsquares: Vec<Vec<Vec<u32>>> = vec![vec![Vec::new(); 9]; 9];
+
+    for row in 0..9 {
+        for column in 0..9 {
+            let mut sub_square: Vec<u32> = Vec::new();
+            for x_coord in 0..3 {
+                for y_coord in 0..3 {
+                    let row_idx = row * 3 + x_coord;
+                    let col_idx = column * 3 + y_coord;
+                    let value = my_vector[row_idx * 9 + col_idx];
+                    sub_square.push(value.try_into().unwrap());
+                }
+            }
+            sudoku_table_of_subsquares[row][column] = sub_square;
+        }
+    }
+
+
+
+    for sqaures in &sudoku_table_of_subsquares {
+        println!("{:?}", sqaures);
     }
 }
