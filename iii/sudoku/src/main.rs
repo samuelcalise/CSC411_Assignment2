@@ -46,7 +46,7 @@ fn main() {
         process::exit(1); // Failed
     }
 
-    //creating array2 object from lib.rs
+    //creating array2 object from lib.rs (invariant)
     let sudoku_array = Array2::new(9, 9, my_vector);
 
     /*

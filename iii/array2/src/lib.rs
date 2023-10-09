@@ -9,6 +9,7 @@ use std::collections::HashSet;
 pub struct Array2<T: Clone> {
     width: u32,
     height: u32,
+    //invariant
     data: Vec<T>,
 }
 
