@@ -1,1 +1,5 @@
-some text
+One essential programming technique is planning and design. These practices form the foundation on which successful software projects are built. This involves conceptualizing, structuring, and organizing code before you begin writing it. 
+
+Planning ahead allows you to have a clearer purpose for the code you plan to write and ensures that you stay focused on the goals of the project. It also allows you to stay efficient by defining a structure to your project beforehand so you can avoid backtracking and rewriting code later in the development cycle. 
+
+By analyzing our instructions very carefully, we can extract what our goals are and plan our code accordingly. By doing so we save time and effort because we have a design for how we want to solve our problem and the only task left is to implement the solution.
