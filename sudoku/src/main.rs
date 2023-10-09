@@ -9,9 +9,6 @@ fn main() {
 
     //Getting The File Name
     let input = env::args().nth(1);
-    //println!("{:?}", input); Value is "None" if there is nothing within terminal run command
-
-    //let img = GrayImage::read(input.as_deref()).unwrap();
 
     let img = match input {
         Some(filename) => {
@@ -32,14 +29,10 @@ fn main() {
 
     //Works
     if img.height != 9 && img.width != 9{
-        //println!("Bad Board");
         process::exit(1);
     }
 
     let mut my_vector: Vec<i32> = Vec::new();
-
-    println!("This img height: {}", img.height);
-    println!("This img width: {}", img.width);
 
     for pixel in &img.pixels {
         my_vector.push(pixel.value.into());
@@ -55,22 +48,14 @@ fn main() {
     }
 
     for row in &sudoku_table {
-        for &element in row {
-            print!("{:?} ", element);
-        }
-        println!();
-    }
-
-    println!();
-    println!("------Below: Verifying Valid Rows----------");
-
-    for row in &sudoku_table {
         let array = Array2::new(img.width, img.height, row.to_vec());
-        println!("{:?}",array.iter_row_major());
+        if array.iter_row_major(){
+            continue;
+        }
+        else{
+            process::exit(1);
+        }
     }
-
-    println!();
-    println!("-----Below: Verifying Valid Rows------");
 
     let mut sudoku_table_of_columns: Vec<Vec<i32>> = vec![vec![0; img.width as usize]; img.height as usize];
 
@@ -80,17 +65,15 @@ fn main() {
         }
     }
 
-    for column in &sudoku_table_of_columns {
-        println!("{:?}", column);
-    }
-
     for every_column in &sudoku_table {
         let array = Array2::new(img.width, img.height, every_column.to_vec());
-        println!("{:?}",array.iter_col_major());
+        if array.iter_col_major(){
+            continue;
+        }
+        else{
+            process::exit(1);
+        }
     }
-
-    println!();
-    println!("-----Below: Verifying SubSquares------");
 
     let mut sudoku_table_of_subsquares: Vec<Vec<Vec<u32>>> = vec![vec![Vec::new(); 3]; 3];
 
@@ -111,15 +94,16 @@ fn main() {
 
     for row in &sudoku_table_of_subsquares {
         for square in row {
-            println!("{:?}", square);
-        }
-    }
-
-    for row in &sudoku_table_of_subsquares {
-        for square in row {
             let array = Array2::new(img.width, img.height, square.to_vec());
-            println!("{:?}",array.iter_subsquare_major());
+            if array.iter_subsquare_major(){
+                continue;
+            }
+            else{
+                process::exit(1);
+            }
         }
     }
-
+    
+    //println!("Made it");
+    process::exit(0);
 }
