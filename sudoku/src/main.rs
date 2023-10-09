@@ -92,26 +92,34 @@ fn main() {
     println!();
     println!("-----Below: Verifying SubSquares------");
 
-    let mut sudoku_table_of_subsquares: Vec<Vec<Vec<u32>>> = vec![vec![Vec::new(); 9]; 9];
+    let mut sudoku_table_of_subsquares: Vec<Vec<Vec<u32>>> = vec![vec![Vec::new(); 3]; 3];
 
-    for row in 0..9 {
-        for column in 0..9 {
+    for sub_square_row in 0..3 {
+        for sub_square_col in 0..3 {
             let mut sub_square: Vec<u32> = Vec::new();
             for x_coord in 0..3 {
                 for y_coord in 0..3 {
-                    let row_idx = row * 3 + x_coord;
-                    let col_idx = column * 3 + y_coord;
-                    let value = my_vector[row_idx * 9 + col_idx];
-                    sub_square.push(value.try_into().unwrap());
+                    let row_idx = sub_square_row * 3 + x_coord;
+                    let col_idx = sub_square_col * 3 + y_coord;
+                    let value = my_vector[row_idx * 9 + col_idx].try_into().unwrap();
+                    sub_square.push(value);
                 }
             }
-            sudoku_table_of_subsquares[row][column] = sub_square;
+            sudoku_table_of_subsquares[sub_square_row][sub_square_col] = sub_square;
         }
     }
 
-
-
-    for sqaures in &sudoku_table_of_subsquares {
-        println!("{:?}", sqaures);
+    for row in &sudoku_table_of_subsquares {
+        for square in row {
+            println!("{:?}", square);
+        }
     }
+
+    for row in &sudoku_table_of_subsquares {
+        for square in row {
+            let array = Array2::new(img.width, img.height, square.to_vec());
+            println!("{:?}",array.iter_subsquare_major());
+        }
+    }
+
 }

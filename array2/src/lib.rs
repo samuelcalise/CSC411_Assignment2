@@ -75,14 +75,4 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
 
         true // All elements are unique
     }
-
-    pub fn f_bool_empty_image(&self) -> bool {
-        // Implement the logic for checking if the image is empty here
-        true // Placeholder logic
-    }
-
-    pub fn f_bool_valid_square(&self) -> bool {
-        // Implement the logic for checking if it's a valid square here
-        true // Placeholder logic
-    }
 }
