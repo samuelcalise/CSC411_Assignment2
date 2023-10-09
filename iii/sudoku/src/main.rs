@@ -4,7 +4,6 @@ use std::vec::Vec;
 use array2::Array2;
 use std::process;
 
-
 fn main() {
 
     //Getting The File Name
@@ -15,15 +14,15 @@ fn main() {
             match GrayImage::read(Some(filename.as_str())) {
                 Ok(img) => img,
                 Err(_err) => {
-                    eprintln!("No File Found In Directory"); //Works
-                    process::exit(1);
+                    //eprintln!("No File Found In Directory"); //Works
+                    process::exit(0); // False 
                 }
             }
         }
         //Works
         None => {
-            eprintln!("No input filename provided.");
-            process::exit(1);
+            //eprintln!("No input filename provided.");
+            process::exit(0); //False
         }
     };
 
@@ -38,72 +37,30 @@ fn main() {
         my_vector.push(pixel.value.into());
     }
 
-    let mut sudoku_table: Vec<Vec<i32>> = vec![vec![0; img.width as usize]; img.height as usize];
 
-    for row in 0..img.height {
-        for col in 0..img.width {
-            let index = (row * img.width + col) as usize;
-            sudoku_table[row as usize][col as usize] = my_vector[index];
-        }
+    let sudoku_array = Array2::new(9, 9, my_vector);
+
+    // Check if the Sudoku array is a valid Sudoku puzzle
+    if sudoku_array.is_valid_sudoku() {
+        // println!("The Sudoku is a valid puzzle.");
+        // process::exit(1); //True
+        //Continue
+
+    } else {
+        println!("The Sudoku is not a valid puzzle.");
+        process::exit(0); // False
     }
 
-    for row in &sudoku_table {
-        let array = Array2::new(img.width, img.height, row.to_vec());
-        if array.iter_row_major(){
-            continue;
-        }
-        else{
-            process::exit(1);
-        }
-    }
-
-    let mut sudoku_table_of_columns: Vec<Vec<i32>> = vec![vec![0; img.width as usize]; img.height as usize];
-
-    for row in 0..9{
-        for column in 0..9{
-            sudoku_table_of_columns[column][row] = my_vector[row * 9 + column];
-        }
-    }
-
-    for every_column in &sudoku_table {
-        let array = Array2::new(img.width, img.height, every_column.to_vec());
-        if array.iter_col_major(){
-            continue;
-        }
-        else{
-            process::exit(1);
-        }
-    }
-
-    let mut sudoku_table_of_subsquares: Vec<Vec<Vec<u32>>> = vec![vec![Vec::new(); 3]; 3];
-
-    for sub_square_row in 0..3 {
-        for sub_square_col in 0..3 {
-            let mut sub_square: Vec<u32> = Vec::new();
-            for x_coord in 0..3 {
-                for y_coord in 0..3 {
-                    let row_idx = sub_square_row * 3 + x_coord;
-                    let col_idx = sub_square_col * 3 + y_coord;
-                    let value = my_vector[row_idx * 9 + col_idx].try_into().unwrap();
-                    sub_square.push(value);
-                }
-            }
-            sudoku_table_of_subsquares[sub_square_row][sub_square_col] = sub_square;
-        }
-    }
-
-    for row in &sudoku_table_of_subsquares {
-        for square in row {
-            let array = Array2::new(img.width, img.height, square.to_vec());
-            if array.iter_subsquare_major(){
-                continue;
-            }
-            else{
-                process::exit(1);
+    for row in 0..3 {
+        for col in 0..3 {
+            let sub_square = sudoku_array.get_subsquare(row * 3, col * 3);
+            if !sub_square.is_unique() {
+                println!("The 3x3 subsquare at row {} col {} is not valid.", row, col);
+                process::exit(0);
             }
         }
     }
-    
-    //println!("Made it");
-    process::exit(0);
+
+    println!("Made it");
+    process::exit(1);
 }
