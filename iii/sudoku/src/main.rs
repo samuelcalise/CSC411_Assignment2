@@ -42,12 +42,12 @@ fn main() {
 
     // Check if the Sudoku array is a valid Sudoku puzzle
     if sudoku_array.is_valid_sudoku() {
-        // println!("The Sudoku is a valid puzzle.");
+        // println!("Sudoku is a valid");
         // process::exit(1); //True
         //Continue
 
     } else {
-        println!("The Sudoku is not a valid puzzle.");
+        //println!("Sudoku is not valid");
         process::exit(0); // False
     }
 
@@ -55,12 +55,12 @@ fn main() {
         for col in 0..3 {
             let sub_square = sudoku_array.get_subsquare(row * 3, col * 3);
             if !sub_square.is_unique() {
-                println!("The 3x3 subsquare at row {} col {} is not valid.", row, col);
+                //println!("!!Error!! => The 3x3 subsquare at row {} col {} is not valid.", row, col);
                 process::exit(0);
             }
         }
     }
 
-    println!("Made it");
+    //println!("Made it");
     process::exit(1);
 }

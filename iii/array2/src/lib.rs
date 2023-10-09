@@ -124,7 +124,7 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq + std::cmp::PartialOrd<i32> + std
             for (_col, row_element) in self.iter_row_major().skip((i * self.width) as usize).take(self.width as usize).enumerate() {
                 if let Some(element) = row_element {
                     if element < 1 || element > 9 || !row_numbers.insert(element.clone()) {
-                        println!("!!Error!! => Invalid element in row {} and column {}: {}", i, _col, element);
+                        //println!("!!Error!! => Invalid element in row {} and column {}: {}", i, _col, element);
                         return false;
                     }
                 }
@@ -133,14 +133,12 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq + std::cmp::PartialOrd<i32> + std
             for (_row, col_element) in self.iter_col_major().skip(i as usize).step_by(self.height as usize).enumerate() {
                 if let Some(element) = col_element {
                     if element < 1 || element > 9 || !col_numbers.insert(element.clone()) {
-                        println!("!!Error!! => Invalid element in row {} and column {}: {}", _row, i, element);
+                        //println!("!!Error!! => Invalid element in row {} and column {}: {}", _row, i, element);
                         return false;
                     }
                 }
             }
         }
-    
         true
     }
-    
 }
