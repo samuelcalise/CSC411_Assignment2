@@ -37,4 +37,4 @@ Yes, please see comments in code.
 
 – Says approximately how many hours you have spent completing the assignment
 
-This assingment took from 10-15 hours to complete
+This assingment took approximately 17 hours to complete
