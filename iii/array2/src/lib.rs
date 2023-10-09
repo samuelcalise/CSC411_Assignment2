@@ -168,7 +168,7 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq + std::cmp::PartialOrd<i32> + std
     }
 
     /*
-        Function: Solving Sodoku
+        Function: Solving Sudoku
 
         The paramter self takes in the Array2 object hat at each iteration of height uses 2 seperate hashmaps that
         are recycled at every iteration. Within the function iter_row_major is used to skip around the 1d vector
