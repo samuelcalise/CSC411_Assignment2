@@ -28,33 +28,33 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
     \------------------------*/
 
     pub fn iter_row_major(&self) -> bool {
-        let mut unique_set = HashSet::new(); // HashSet to track unique elements
+
+        let mut unique_set = HashSet::new(); 
 
         for element in &self.data {
             if unique_set.contains(element) {
-                // If the element is already in the set, it's not unique
                 return false;
             } else {
-                unique_set.insert(element.clone()); // Insert the element into the set
+                unique_set.insert(element.clone()); 
             }
         }
 
-        true // All elements are unique
+        true
     }
 
     pub fn iter_col_major(&self) -> bool {
-        let mut unique_set = HashSet::new(); // HashSet to track unique elements
+
+        let mut unique_set = HashSet::new(); 
 
         for element in &self.data {
             if unique_set.contains(element) {
-                // If the element is already in the set, it's not unique
                 return false;
             } else {
-                unique_set.insert(element.clone()); // Insert the element into the set
+                unique_set.insert(element.clone()); 
             }
         }
 
-        true // All elements are unique
+        true
     }
 
     pub fn get_data(&self) -> &Vec<T> {
@@ -62,17 +62,17 @@ impl<T: Clone + std::hash::Hash + std::cmp::Eq> Array2<T> {
     }
 
     pub fn iter_subsquare_major(&self) -> bool {
-        let mut unique_set = HashSet::new(); // HashSet to track unique elements
+        
+        let mut unique_set = HashSet::new(); 
 
         for element in &self.data {
             if unique_set.contains(element) {
-                // If the element is already in the set, it's not unique
                 return false;
             } else {
-                unique_set.insert(element.clone()); // Insert the element into the set
+                unique_set.insert(element.clone()); 
             }
         }
 
-        true // All elements are unique
+        true
     }
 }
