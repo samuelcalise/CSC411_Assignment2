@@ -31,12 +31,11 @@ fn main(){
     let img = match GrayImage::read(Some(input.trim())) {
         Ok(img) => img,
         Err(_) => {
-            let path_str = input.trim();
-            let path_str_ref: &str = &path_str;
-            match GrayImage::read(Some(path_str_ref)) {
+            let path_string = input.trim();
+            let path_string_ref: &str = &path_string;
+            match GrayImage::read(Some(path_string_ref)) {
                 Ok(img) => img,
                 Err(_) => {
-                    eprintln!("Invalid input or file not found.");
                     process::exit(1);
                 }
             }
