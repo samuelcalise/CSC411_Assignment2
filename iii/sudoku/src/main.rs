@@ -3,32 +3,43 @@ use std::env;
 use std::vec::Vec;
 use array2::Array2;
 use std::process;
+use std::io;
 
-fn main() {
+fn main(){
 
     //Getting The File Name
-    let input = env::args().nth(1);
+    let mut input = String::new();
+    let command_arguments: Vec<String> = env::args().collect();
 
+    if command_arguments.len() != 2 {
+        match io::stdin().read_line(&mut input) {
+            Ok(_) => {}
+            Err(_err) => {
+                process::exit(1);
+            }
+        }
+    } else {
+        let filename = &command_arguments[1];
+        input = filename.to_string();
+    }
     
     /*
         Verifying the input via terminal command line whether the 
         filename is a valid GrayImage, and whether the file name 
         is provided within the teminal cargo run command
     */
-    let img = match input {
-        Some(filename) => {
-            match GrayImage::read(Some(filename.as_str())) {
+    let img = match GrayImage::read(Some(input.trim())) {
+        Ok(img) => img,
+        Err(_) => {
+            let path_str = input.trim();
+            let path_str_ref: &str = &path_str;
+            match GrayImage::read(Some(path_str_ref)) {
                 Ok(img) => img,
-                Err(_err) => {
-                    //eprintln!("No File Found In Directory"); //Works
-                    process::exit(1); // Failed
+                Err(_) => {
+                    eprintln!("Invalid input or file not found.");
+                    process::exit(1);
                 }
             }
-        }
-        //Works
-        None => {
-            //eprintln!("No input filename provided.");
-            process::exit(1); // Failed
         }
     };
 
